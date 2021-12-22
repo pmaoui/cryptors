@@ -1,0 +1,49 @@
+<html
+    x-data="{ isMobile: window.innerWidth < 769, isMenuExpanded: false }"
+    @resize.window="isMobile=window.innerWidth < 769"
+>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!--<script defer src="./cdn.min.js"></script>-->
+        <link rel="stylesheet" href="index.css" />
+        <script
+            defer
+            src="https://unpkg.com/alpinejs@3.7.1/dist/cdn.min.js"
+        ></script>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=VT323&display=swap"
+            rel="stylesheet"
+        />
+    </head>
+    <body>
+        <header x-bind:class="isMenuExpanded ? 'expanded' : ''">
+            <div id="main-nav">
+                <a id="main-logo" href="#"
+                    ><img height="45px" src="logo.png" alt="Cryptors 500 Fight Club" />
+                </a>
+                <a
+                    class="mobile-icon"
+                    x-show="!isMenuExpanded"
+                    @click="isMenuExpanded=true"
+                    >≡</a
+                >
+                <a
+                    class="mobile-icon"
+                    x-show="isMenuExpanded"
+                    @click="isMenuExpanded=false"
+                    >&times;</a
+                >
+            </div>
+            <div id="menu" x-show="!isMobile || isMenuExpanded">
+                <a href="#">Tokenomics</a>
+                <a href="#">Roadmap</a>
+                <a href="#">Rounds</a>
+                <a href="#">My Wallet</a>
+                <a href="#">Team</a>
+            </div>
+        </header>
+        <content x-show="!isMenuExpanded"> </content>
+    </body>
+</html>
