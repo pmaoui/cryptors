@@ -1,0 +1,101 @@
+#intro {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 9999;
+}
+
+#gm {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    180deg,
+    #540d9b 0.38%,
+    #d95dd4 45.7%,
+    #f2a274 99.26%
+  );
+  overflow: hidden;
+}
+
+#gm-young-warrior {
+  opacity: 0;
+  position: absolute;
+  left: 50%;
+  bottom: 53vh;
+  width: 600px;
+  margin-left: -300px;
+}
+
+#gm-young-warrior.step1 {
+  transition: opacity 2s linear;
+  opacity: 1;
+}
+
+#gm-young-warrior.step2 {
+  transition: opacity 300ms linear;
+}
+
+#gm-sun {
+  position: absolute;
+  left: 50%;
+  bottom: 46vh;
+  margin-left: -340px;
+  width: 680px;
+  height: 335px;
+  background: linear-gradient(180deg, #ff637d 0%, #ffed78 100%);
+  border-top-left-radius: 500px;
+  border-top-right-radius: 500px;
+}
+
+#gm-floor-background {
+  position: absolute;
+  top: 35vh;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  transform: perspective(450px) rotateX(50deg);
+  background: linear-gradient(
+    180deg,
+    #d95dd4 0%,
+    #f2a274 100%
+  );
+}
+
+#gm-floor {
+  position: absolute;
+  top: 35vh;
+  bottom: 0;
+  right: -1000px;
+  left: -1000px;
+  border-top: 2px solid #fff;
+  transform: perspective(450px) rotateX(50deg);
+  background-image: repeating-linear-gradient(
+      to bottom,
+      #fff,
+      #fff 2px,
+      transparent 2px,
+      transparent 40px
+    ),
+    repeating-linear-gradient(
+      to right,
+      #fff,
+      #fff 2px,
+      transparent 2px,
+      transparent 120px
+    );
+}
+
+@keyframes appears {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
