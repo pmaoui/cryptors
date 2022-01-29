@@ -24,7 +24,7 @@
             });
             function next(togoStep, timeout = 0) {
                 setTimeout(() => {
-                    const currentStep = Alpine.store('step')
+                    const currentStep = Alpine.store("step");
                     if (currentStep < togoStep) {
                         Alpine.store("step", togoStep);
                     }
@@ -32,7 +32,7 @@
             }
         </script>
     </head>
-    <body>
+    <body @keydown="next($store.step + 1)">
         <header x-bind:class="isMenuExpanded ? 'expanded' : ''">
             <div id="main-nav">
                 <a id="main-logo" href="#"
@@ -64,7 +64,13 @@
             </div>
         </header>
 
-        <div id="intro" @click="next($store.step + 1)">
+        <div id="intro" @click="next($store.step + 1)" x-show="$store.step < 8">
+            <img
+                id="skip"
+                src="./skip.png"
+                alt="Click here to skip the intro"
+                @click="next(9)"
+            />
             <h1 id="debugtxt" x-text="$store.step"></h1>
             <div id="gm" x-show="$store.step < 3">
                 <div id="gm-sun"></div>
@@ -83,16 +89,72 @@
                     x-bind:class="`step${$store.step}`"
                     src="press_start.png"
                     alt="A text that says you can press start"
-                    x-on:transitionend="next(3, 3500)"
+                    x-on:transitionend="next(3, 3500); next(4, 4500)"
                 />
             </div>
             <div id="ring" x-show="$store.step > 2">
                 <img
                     id="hawking"
                     src="hawking.png"
-                    alt="Stephen Hawking about to say something"
+                    alt="Stephen Hawking is about to say something"
                     x-bind:class="`step${$store.step}`"
                 />
+                <div
+                    id="hawking-txt1"
+                    class="msgbox hawking-txt"
+                    x-bind:class="`step${$store.step}`"
+                    x-on:transitionend="next(5, 3500)"
+                >
+                    <span class="author">Stephen Hawking:</span>
+                    <span class="message"
+                        >Hi young trainee. I'am Coach Stephen and this is my
+                        friend Coach Alan. Welcome to the CRYPTORS 500 FIGHT
+                        CLUB.</span
+                    >
+                </div>
+                <img
+                    id="turing"
+                    src="turing.png"
+                    alt="Alan Turing is about to say something"
+                    x-bind:class="`step${$store.step}`"
+                />
+                <div
+                    id="turing-txt2"
+                    class="msgbox"
+                    x-bind:class="`step${$store.step}`"
+                    x-on:transitionend="next(6, 5500)"
+                >
+                    <span class="author">Alan Turing:</span>
+                    <span class="message"
+                        >Hi there. C500FC is a unique NFT collection of 500
+                        figures from History and 50 from fiction with variations
+                        resulting in 5 050 NFT Warriors.
+                    </span>
+                </div>
+                <div
+                    id="hawking-txt3"
+                    class="msgbox hawking-txt"
+                    x-bind:class="`step${$store.step}`"
+                    x-on:transitionend="next(7, 3500)"
+                >
+                    <span class="author">Stephen Hawking:</span>
+                    <span class="message"
+                        >Everyone of them is handmade. Yet some more rare than
+                        others&hellip;</span
+                    >
+                </div>
+                <div
+                    id="hawking-txt4"
+                    class="msgbox hawking-txt"
+                    x-bind:class="`step${$store.step}`"
+                    x-on:transitionend="next(8, 3500)"
+                >
+                    <span class="author">Stephen Hawking:</span>
+                    <span class="message"
+                        >Hurry up our ranks are growing already! Follow us on
+                        Twitter and Telegram!</span
+                    >
+                </div>
             </div>
         </div>
         <content x-show="!isMenuExpanded"> </content>

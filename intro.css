@@ -4,6 +4,7 @@
   top: 0;
   color: #fff;
   z-index: 99999;
+  display: none;
 }
 
 #intro {
@@ -13,6 +14,17 @@
   right: 0;
   bottom: 0;
   z-index: 9999;
+  user-select: none;
+}
+
+#skip {
+  position: absolute;
+  left: 80vw;
+  width: 8vw;
+  height: auto;
+  bottom: 10px;
+  z-index: 99999;
+  cursor: hand;
 }
 
 #gm {
@@ -127,16 +139,85 @@
   background-position: center;
 }
 
+.msgbox {
+  position: absolute;
+  border: 3px solid #000;
+  background-color: #fff;
+  box-shadow: 5px 5px 0 #000;
+  color: #000;
+  padding: .7em;
+  line-height: 1.5em;
+  letter-spacing: 1px;
+}
+
+.msgbox .author {
+  text-transform: uppercase;
+}
+
 #hawking {
   position: absolute;
-  transition: right 1000ms ease-in;
-  bottom: 2vh;
-  right: -10vw;
-  height: 55vh;
+  transition: left 500ms ease-in;
+  bottom: 4vh;
+  height: 47vh;
+  left: 52vw;
 }
 
 #hawking.step3 {
-  right: 33vw;
+  left: 110vw;
+}
+
+.hawking-txt {
+  transition: opacity 500ms linear;
+  left: 42vw;
+  top: 45vh;
+  width: 16vw;
+  opacity: 0;
+}
+
+.hawking-txt .author {
+  color: #ff5c00;
+}
+
+#hawking-txt1.step4 {
+  opacity: 1;
+}
+
+#hawking-txt3.step6 {
+  opacity: 1;
+}
+
+#hawking-txt4.step7 {
+  opacity: 1;
+}
+
+#turing {
+  position: absolute;
+  transition: top 500ms ease-in;
+  top: 41vh;
+  height: 55vh;
+  right: 60vw;
+}
+
+#turing.step3,
+#turing.step4 {
+  transition-duration: 0;
+  top: 110vh;
+}
+
+#turing-txt2 {
+  transition: opacity 500ms linear;
+  left: 36vw;
+  top: 27vh;
+  width: 18vw;
+  opacity: 0;
+}
+
+#turing-txt2 .author {
+  color: #397dff;
+}
+
+#turing-txt2.step5 {
+  opacity: 1;
 }
 
 @keyframes appears {
