@@ -22,10 +22,12 @@
             document.addEventListener("alpine:init", () => {
                 Alpine.store("step", 1);
             });
-            function next(timeout = 0) {
+            function next(togoStep, timeout = 0) {
                 setTimeout(() => {
-                    console.log("je suis libre ici: " + Alpine.store("step"));
-                    Alpine.store("step", 2);
+                    const currentStep = Alpine.store('step')
+                    if (currentStep < togoStep) {
+                        Alpine.store("step", togoStep);
+                    }
                 }, timeout);
             }
         </script>
@@ -62,20 +64,35 @@
             </div>
         </header>
 
-        <div id="intro">
-            <div id="gm">
+        <div id="intro" @click="next($store.step + 1)">
+            <h1 id="debugtxt" x-text="$store.step"></h1>
+            <div id="gm" x-show="$store.step < 3">
                 <div id="gm-sun"></div>
+                <div id="gm-floor-background"></div>
+                <div id="gm-floor"></div>
                 <img
                     id="gm-young-warrior"
                     x-bind:class="`step${$store.step}`"
                     width="600px"
                     src="gm-young-warrior.png"
-                    alt="GM, YOUNG WARRIOR"
-                    x-on:transitionend="next(5000)"
-                    @click="next()"
+                    alt="A text that says: GM, YOUNG WARRIOR"
+                    x-on:transitionend="next(2, 3500)"
                 />
-                <div id="gm-floor-background"></div>
-                <div id="gm-floor"></div>
+                <img
+                    id="press-start"
+                    x-bind:class="`step${$store.step}`"
+                    src="press_start.png"
+                    alt="A text that says you can press start"
+                    x-on:transitionend="next(3, 3500)"
+                />
+            </div>
+            <div id="ring" x-show="$store.step > 2">
+                <img
+                    id="hawking"
+                    src="hawking.png"
+                    alt="Stephen Hawking about to say something"
+                    x-bind:class="`step${$store.step}`"
+                />
             </div>
         </div>
         <content x-show="!isMenuExpanded"> </content>

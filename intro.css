@@ -1,3 +1,11 @@
+#debugtxt {
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: #fff;
+  z-index: 99999;
+}
+
 #intro {
   position: absolute;
   top: 0;
@@ -26,18 +34,37 @@
   opacity: 0;
   position: absolute;
   left: 50%;
-  bottom: 53vh;
+  bottom: 43vh;
   width: 600px;
   margin-left: -300px;
 }
 
+#press-start {
+  position: absolute;
+  opacity: 0;
+  width: 920px;
+  margin-left: -460px;
+  bottom: 0;
+  left: 50%;
+}
+
 #gm-young-warrior.step1 {
-  transition: opacity 2s linear;
+  transition: all 500ms linear;
+  transition-property: opacity, bottom;
+  bottom: 53vh;
   opacity: 1;
 }
 
 #gm-young-warrior.step2 {
   transition: opacity 300ms linear;
+  bottom: 53vh;
+}
+
+#press-start.step2 {
+  transition: all 500ms linear;
+  transition-property: opacity, bottom;
+  opacity: 1;
+  bottom: 18vh;
 }
 
 #gm-sun {
@@ -59,11 +86,7 @@
   left: 0;
   right: 0;
   transform: perspective(450px) rotateX(50deg);
-  background: linear-gradient(
-    180deg,
-    #d95dd4 0%,
-    #f2a274 100%
-  );
+  background: linear-gradient(180deg, #d95dd4 0%, #f2a274 100%);
 }
 
 #gm-floor {
@@ -88,6 +111,32 @@
       transparent 2px,
       transparent 120px
     );
+}
+
+#ring {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+  background-image: url(./bg_ring.png);
+  background-size: auto 100%;
+  background-repeat: no-repeat;
+  background-color: #26091f;
+  background-position: center;
+}
+
+#hawking {
+  position: absolute;
+  transition: right 1000ms ease-in;
+  bottom: 2vh;
+  right: -10vw;
+  height: 55vh;
+}
+
+#hawking.step3 {
+  right: 33vw;
 }
 
 @keyframes appears {
